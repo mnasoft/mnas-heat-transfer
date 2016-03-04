@@ -6,7 +6,6 @@
 
 (defun Nu (α l λ) (/ (* α l) λ))
 
-
 (defgeneric Gr (liquid param-wall param-liquid dimenion acceleration-of-gravity)
   (:documentation "Число Грасгофа")
   )
@@ -21,12 +20,6 @@
 
 (defmethod β ((agas gas) (param parametrised))
   (/ 1 (tempreche param)))
-
-(β *air* *p1*)
-
-(Gr *air* *p-w-out* *p-l-out* 3.5 9.8066)
-
-(Pr-air (+ 273.15 22.5 ))
 
 (defgeneric Nu-8-9 (liquid param-w param-liquid dimension acceleration-of-gravity)
   (:documentation
@@ -66,24 +59,3 @@
      (- (tempreche p-w) (tempreche p-l)  )
      area))
 
-(defparameter *air* (make-instance 'idelchik:gas :name "Воздух"))
-
-(defparameter *p-w-out* (make-instance 'parametrised :tempreche (+ 273.15 100.0)))
-
-(defparameter *p-l-out* (make-instance 'parametrised :tempreche (+ 273.15 38.0)))
-
-(defparameter *p-mid* (make-instance 'parametrised :tempreche (/ (+ (tempreche *p-w-out*) (tempreche *p-l-out*)) 2)))
-
-(Nu-8-9 *air* *p-w-out* *p-l-out* 3.5 9.81)
-
-(α-Nu-λ-l *air* *p-w-out* *p-l-out* 3.5 9.81)
-
-(/ (Q *air* *p-w-out* *p-l-out* 3.5 9.81 (* 3.5 3.5 0.25 pi)) 0.9)
-
-(mapcar
- #'(lambda (el)
-     (setf (tempreche *p-w-out*) (+ el 273.15))
-     (list (/ (Q *air* *p-w-out* *p-l-out* 3.5 9.81 (* 3.5 3.5 0.25 pi)) 0.9) el)
-     )
- '(40 45 50 55 60 65 70 75 80 85 90 )
- )
