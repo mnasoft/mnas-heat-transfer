@@ -1,6 +1,6 @@
 ;;;; package.lisp
 
-(defpackage #:mnas-heat-transfer
+(defpackage :mnas-heat-transfer
   (:use #:cl #:idelchik)
 ;;;  (:export )
   )

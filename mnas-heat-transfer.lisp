@@ -1,6 +1,6 @@
 ;;;; mnas-heat-transfer.lisp
 
-(in-package #:mnas-heat-transfer)
+(in-package :mnas-heat-transfer)
 
 ;;; "mnas-heat-transfer" goes here. Hacks and glory await!
 
